@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Seu Aplicativo Financeiro</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -52,16 +52,40 @@
             </div>
         </div>
         <div>
-            <canvas id="myPieChart" width="200" height="300"></canvas>
+            <canvas id="myPieChart"></canvas>
         </div>
     </div>
     <footer>
         <div id="footer">
-           <img src="imagens/Group 3.svg" id="#addExpenseBtn" alt="">
+            <img src="imagens/Group 3.svg" id="openModalBtn" alt="">
         </div>
     </footer>
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <p>Adicionar um...</p>
+            <button class="credito" onclick="atualizarCaixaCredito()">Crédito</button>
+            <button class="debito" onclick="adicionarDebito()">Débito</button>
+        </div>
+    </div>
+    <div id="caixaCredito"  class="caixaCredito">
+        <div class="caixaCredito-content">
+            <span class="close" onclick="fecharcaixaCredito()">&times;</span>
+            <button onclick="atualizarCaixaSalario()">Salário</button>
+            <button>Outros</button>
+        </div>
+    </div>
+    <div id="caixaSalario" class="caixaSalario" style="display: none;">
+        <div class="caixaSalario-content">
+            <span class="close" onclick="fecharcaixaSalario()">&times;</span>
+            <h2>Salário</h2>
+            <label for="valorSalario">Digite o valor:</label>
+            <input type="text" id="valorSalario" placeholder="Digite o valor">
+            <small>Esse valor será adicionado todos os meses ao saldo em conta.</small>
+            <button onclick="confirmarSalario()">Confirmar</button>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
-        
-    
