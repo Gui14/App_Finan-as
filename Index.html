@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="content">
+        <header>
+            <div id="div_saldo_conta">
+                <p>Saldo em conta</p>
+                <p id="saldo_conta">R$ 1320,00</p>
+            </div>
+        </header>
+        <div id="div_select_mes">
+            <select name="mes" id="select_mes">
+                <option value="janeiro">Janeiro</option>
+                <option value="fevereiro">Fevereiro</option>
+                <option value="marco">Março</option>
+                <option value="abril">Abril</option>
+                <option value="maio">Maio</option>
+                <option value="junho">Junho</option>
+                <option value="julho">Julho</option>
+                <option value="agosto">Agosto</option>
+                <option value="setembro">Setembro</option>
+                <option value="outubro">Outubro</option>
+                <option value="novembro">Novembro</option>
+                <option value="decembro">Decembro</option>
+            </select>
+        </div>
+        <div id="div_info_rec_des">
+            <div class="format_all_info">
+                <div>
+                    <img src="imagens/Group 1.svg" alt="">
+                </div>
+                <div class="div_rec_num">
+                    <p>Receitas</p>
+                    <p id="num_receitas"> R$ 0,00</p>
+                </div>
+            </div>
+            <div class="format_all_info">
+                <div>
+                    <img src="imagens/Group 2.svg" alt="">
+                </div>
+                <div class="div_rec_num">
+                    <p>Despesas</p>
+                    <p id="num_despesas">R$ 0,00</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <canvas id="myPieChart" width="200" height="300"></canvas>
+        </div>
+    </div>
+    <footer>
+        <div id="footer">
+           <img src="imagens/Group 3.svg" id="#addExpenseBtn" alt="">
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
+        
+    
