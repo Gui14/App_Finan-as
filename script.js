@@ -1,3 +1,8 @@
+const dataAtual = new Date();
+const mesAtual = dataAtual.getMonth;
+var select = document.getElementById('select_mes');
+var opcaoValor = select.options[select.selectedIndex].value
+
 // Dados iniciais para janeiro (você pode adicionar dados para outros meses)
 var mesesData = {
   janeiro: {
@@ -59,6 +64,30 @@ function fecharcaixaSalario() {
   var caixaSalario = document.getElementById('caixaSalario');
   caixaSalario.style.display = 'none';
 }
+function fecharcaixaDebito() {
+  var caixaDebito = document.getElementById('caixaDebito');
+  caixaDebito.style.display = 'none';
+}
+function fecharcaixage() {
+  var caixage = document.getElementById('caixage');
+  caixage.style.display = 'none';
+}
+function fecharcaixagp() {
+  var caixagp = document.getElementById('caixagp');
+  caixagp.style.display = 'none';
+}
+function fecharcaixad() {
+  var caixad = document.getElementById('caixad');
+  caixad.style.display = 'none';
+}
+function fecharcaixai() {
+  var caixai = document.getElementById('caixai');
+  caixai.style.display = 'none';
+}
+function fecharcaixaoutros() {
+  var caixaoutros = document.getElementById('caixaoutros');
+  caixaoutros.style.display = 'none';
+}
 
 // Função para atualizar a caixa de crédito
 // Função para atualizar a caixa de crédito
@@ -81,27 +110,66 @@ function atualizarCaixaSalario() {
   document.getElementById('caixaCredito').style.display = 'none';
   document.getElementById('caixaOutros').style.display = 'none';
 }
+function atualizarCaixaDebito() {
+  var caixaDebito = document.getElementById('caixaDebito');
+  caixaDebito.style.display = 'block';
+
+  // Ocultar outros elementos que não devem ser exibidos ao selecionar salário
+  document.getElementById('modal').style.display = 'none';
+  document.getElementById('caixaOutros').style.display = 'none';
+}
+function atualizarCaixaDebito_ge() {
+  var caixage = document.getElementById('caixage');
+  caixage.style.display = 'block';
+
+  // Ocultar outros elementos que não devem ser exibidos ao selecionar salário
+  document.getElementById('caixaDebito').style.display = 'none';
+}
+function atualizarCaixaDebito_gp() {
+  var caixagp = document.getElementById('caixagp');
+  caixagp.style.display = 'block';
+
+  // Ocultar outros elementos que não devem ser exibidos ao selecionar salário
+  document.getElementById('caixaDebito').style.display = 'none';
+}
+function atualizarCaixaDebito_d() {
+  var caixad = document.getElementById('caixad');
+  caixad.style.display = 'block';
+
+  // Ocultar outros elementos que não devem ser exibidos ao selecionar salário
+  document.getElementById('caixaDebito').style.display = 'none';
+}
+function atualizarCaixaDebito_i() {
+  var caixai = document.getElementById('caixai');
+  caixai.style.display = 'block';
+
+  // Ocultar outros elementos que não devem ser exibidos ao selecionar salário
+  document.getElementById('caixaDebito').style.display = 'none';
+}
+function atualizarCaixaOutros() {
+  var caixaoutros = document.getElementById('caixaoutros');
+  caixaoutros.style.display = 'block';
+
+  // Ocultar outros elementos que não devem ser exibidos ao selecionar salário
+  document.getElementById('caixaDebito').style.display = 'none';
+}
 
 // Função para confirmar o salário
 function confirmarSalario() {
     var valorSalario = document.getElementById('valorSalario').value;
     if (valorSalario) {
+      if (opcaoValor <= mesAtual){
         alert(`Salário confirmado! Valor: R$ ${valorSalario}`);
         fecharcaixaSalario();
+        atualizarValores();
         // Atualize aqui o saldo em conta com o valor do salário
+      }
+      else  {
+        alert('Não é possível mudar valor dos meses seguintes');
+       } 
     } else {
         alert('Por favor, digite o valor do salário.');
     }
-}
-
-// Função para atualizar a caixa de outros
-function atualizarCaixaOutros() {
-    var caixaOutros = document.getElementById('caixaOutros');
-    caixaOutros.style.display = 'block';
-
-    // Ocultar outros elementos que não devem ser exibidos ao selecionar outros
-    document.getElementById('caixaCredito').style.display = 'none';
-    document.getElementById('caixaSalario').style.display = 'none';
 }
 
 // Adiciona evento de clique à imagem para abrir o modal
