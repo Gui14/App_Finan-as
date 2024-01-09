@@ -85,7 +85,7 @@
             <input type="text" id="valorSalario" placeholder="Digite o valor">
             <small>Esse valor será adicionado todos os meses ao saldo em conta.</small>
             <br>
-            <button onclick="confirmarSalario()">Confirmar</button>
+            <button onclick="adicionarSalario()">Confirmar</button>
         </div>
     </div>
     <div id="caixaDebito" style="display: none;"> 
@@ -107,9 +107,9 @@
             <input type="text" id="nomegastoe" placeholder="Comida...">
             <br>
             <label for="valorSalario">Digite o valor:</label>
-            <input type="text" id="valorSalario" placeholder="Digite o valor">
+            <input type="text" id="valorgastoe" placeholder="Digite o valor">
             <br>
-            <button onclick="fecharcaixage()">Confirmar</button>
+            <button onclick="adicionarGastosEssenciais()">Confirmar</button>
         </div>
     </div>
 
@@ -119,12 +119,12 @@
             <h2>Gasto Pessoal</h2>
             <br>
             <label for="nomegastoe">Digite um título para o gasto:</label>
-            <input type="text" id="nomegastoe" placeholder="Roupas...">
+            <input type="text" id="nomegastog" placeholder="Roupas...">
             <br>
             <label for="valorSalario">Digite o valor:</label>
-            <input type="text" id="valorSalario" placeholder="Digite o valor">
+            <input type="number" id="valorgastop" placeholder="Digite o valor">
             <br>
-            <button onclick="fecharcaixagp()">Confirmar</button>
+            <button onclick="adicionarGastosPessoais()">Confirmar</button>
         </div>
     </div>
 
@@ -137,9 +137,9 @@
             <input type="text" id="nomegastoe" placeholder="Conta de luz...">
             <br>
             <label for="valorSalario">Digite o valor:</label>
-            <input type="text" id="valorSalario" placeholder="Digite o valor">
+            <input type="text" id="valordivida" placeholder="Digite o valor">
             <br>
-            <button onclick="fecharcaixad()">Confirmar</button>
+            <button onclick="adicionarDividas()">Confirmar</button>
         </div>
     </div>
 
@@ -152,9 +152,9 @@
             <input type="text" id="nomegastoe" placeholder="Ações">
             <br>
             <label for="valorSalario">Digite o valor:</label>
-            <input type="text" id="valorSalario" placeholder="Digite o valor">
+            <input type="text" id="valorinvestimento" placeholder="Digite o valor">
             <br>
-            <button onclick="fecharcaixai()">Confirmar</button>
+            <button onclick="adicionarInvestimentos()">Confirmar</button>
         </div>
     </div>
 
@@ -167,9 +167,9 @@
             <input type="text" id="nomegastoe" placeholder="Vendas...">
             <br>
             <label for="valorSalario">Digite o valor:</label>
-            <input type="text" id="valorSalario" placeholder="Digite o valor">
+            <input type="text" id="valoroutros" placeholder="Digite o valor">
             <br>
-            <button onclick="fecharcaixaoutros()">Confirmar</button>
+            <button onclick="adicionarOutros()">Confirmar</button>
         </div>
     </div>
     <script src="script.js"></script>
