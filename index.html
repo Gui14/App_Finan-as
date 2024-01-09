@@ -17,18 +17,18 @@
         </header>
         <div id="div_select_mes">
             <select name="mes" id="select_mes">
-                <option value="janeiro">Janeiro</option>
-                <option value="fevereiro">Fevereiro</option>
-                <option value="marco">Março</option>
-                <option value="abril">Abril</option>
-                <option value="maio">Maio</option>
-                <option value="junho">Junho</option>
-                <option value="julho">Julho</option>
-                <option value="agosto">Agosto</option>
-                <option value="setembro">Setembro</option>
-                <option value="outubro">Outubro</option>
-                <option value="novembro">Novembro</option>
-                <option value="decembro">Decembro</option>
+                <option value="0">Janeiro</option>
+                <option value="1">Fevereiro</option>
+                <option value="2">Março</option>
+                <option value="3">Abril</option>
+                <option value="4">Maio</option>
+                <option value="5">Junho</option>
+                <option value="6">Julho</option>
+                <option value="7">Agosto</option>
+                <option value="8">Setembro</option>
+                <option value="9">Outubro</option>
+                <option value="10">Novembro</option>
+                <option value="11">Decembro</option>
             </select>
         </div>
         <div id="div_info_rec_des">
@@ -66,14 +66,14 @@
             <span class="close" onclick="fecharModal()">&times;</span>
             <p>Adicionar um...</p>
             <button class="credito" onclick="atualizarCaixaCredito()">Crédito</button>
-            <button class="debito" onclick="adicionarDebito()">Débito</button>
+            <button class="debito" onclick="atualizarCaixaDebito()">Débito</button>
         </div>
     </div>
     <div id="caixaCredito"  class="caixaCredito">
         <div class="caixaCredito-content">
             <span class="close" onclick="fecharcaixaCredito()">&times;</span>
             <button onclick="atualizarCaixaSalario()">Salário</button>
-            <button>Outros</button>
+            <button onclick="atualizarCaixaOutros()">Outros</button>
         </div>
     </div>
     <div id="caixaSalario" class="caixaSalario" style="display: none;">
@@ -81,9 +81,95 @@
             <span class="close" onclick="fecharcaixaSalario()">&times;</span>
             <h2>Salário</h2>
             <label for="valorSalario">Digite o valor:</label>
+            <br>
             <input type="text" id="valorSalario" placeholder="Digite o valor">
             <small>Esse valor será adicionado todos os meses ao saldo em conta.</small>
+            <br>
             <button onclick="confirmarSalario()">Confirmar</button>
+        </div>
+    </div>
+    <div id="caixaDebito" style="display: none;"> 
+        <div class="caixaDebito-content">
+            <span class="close" onclick="fecharcaixaDebito()">&times;</span>
+            <button onclick="atualizarCaixaDebito_ge()">Gastos Essenciais</button>
+            <button onclick="atualizarCaixaDebito_gp()">Gastos Pessoais</button>
+            <button onclick="atualizarCaixaDebito_d()">Dívidas</button>
+            <button onclick="atualizarCaixaDebito_i()">Investimentos</button>
+        </div>
+    </div>
+
+    <div id="caixage" class="caixage" style="display: none;">
+        <div class="caixage-content">
+            <span class="close" onclick="fecharcaixage()">&times;</span>
+            <h2>Gasto Essencial</h2>
+            <br>
+            <label for="nomegastoe">Digite um título para o gasto:</label>
+            <input type="text" id="nomegastoe" placeholder="Comida...">
+            <br>
+            <label for="valorSalario">Digite o valor:</label>
+            <input type="text" id="valorSalario" placeholder="Digite o valor">
+            <br>
+            <button onclick="confirmarGastoe()">Confirmar</button>
+        </div>
+    </div>
+
+    <div id="caixagp" class="caixage" style="display: none;">
+        <div class="caixage-content">
+            <span class="close" onclick="fecharcaixagp()">&times;</span>
+            <h2>Gasto Pessoal</h2>
+            <br>
+            <label for="nomegastoe">Digite um título para o gasto:</label>
+            <input type="text" id="nomegastoe" placeholder="Roupas...">
+            <br>
+            <label for="valorSalario">Digite o valor:</label>
+            <input type="text" id="valorSalario" placeholder="Digite o valor">
+            <br>
+            <button onclick="confirmarGastoe()">Confirmar</button>
+        </div>
+    </div>
+
+    <div id="caixad" class="caixage" style="display: none;">
+        <div class="caixage-content">
+            <span class="close" onclick="fecharcaixad()">&times;</span>
+            <h2>Dívida</h2>
+            <br>
+            <label for="nomegastoe">Digite um título para a dívida:</label>
+            <input type="text" id="nomegastoe" placeholder="Conta de luz...">
+            <br>
+            <label for="valorSalario">Digite o valor:</label>
+            <input type="text" id="valorSalario" placeholder="Digite o valor">
+            <br>
+            <button onclick="confirmarGastoe()">Confirmar</button>
+        </div>
+    </div>
+
+    <div id="caixai" class="caixage" style="display: none;">
+        <div class="caixage-content">
+            <span class="close" onclick="fecharcaixai()">&times;</span>
+            <h2>Investimento</h2>
+            <br>
+            <label for="nomegastoe">Digite um título para o investimento:</label>
+            <input type="text" id="nomegastoe" placeholder="Ações">
+            <br>
+            <label for="valorSalario">Digite o valor:</label>
+            <input type="text" id="valorSalario" placeholder="Digite o valor">
+            <br>
+            <button onclick="confirmarGastoe()">Confirmar</button>
+        </div>
+    </div>
+
+    <div id="caixaoutros" class="caixage" style="display: none;">
+        <div class="caixage-content">
+            <span class="close" onclick="fecharcaixaoutros()">&times;</span>
+            <h2>Outros</h2>
+            <br>
+            <label for="nomegastoe">Digite um título para o Crédito:</label>
+            <input type="text" id="nomegastoe" placeholder="Vendas...">
+            <br>
+            <label for="valorSalario">Digite o valor:</label>
+            <input type="text" id="valorSalario" placeholder="Digite o valor">
+            <br>
+            <button onclick="confirmarGastoe()">Confirmar</button>
         </div>
     </div>
     <script src="script.js"></script>
