@@ -6,7 +6,7 @@ var opcaoValor = select.options[select.selectedIndex].value
 // Dados iniciais para janeiro (você pode adicionar dados para outros meses)
 var mesesData = {
   janeiro: {
-    saldoConta: 1320,
+    saldoConta: 0,
     receitas: 0,
     despesas: 0,
     gastosPorCategoria: [30, 20, 25, 25],
