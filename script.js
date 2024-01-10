@@ -1,5 +1,6 @@
 const dataAtual = new Date();
-const mesAtual = dataAtual.getMonth;
+const mesAtual = dataAtual.getMonth();
+const diaAtual = dataAtual.getDay();
 var select = document.getElementById('select_mes');
 var opcaoValor = select.options[select.selectedIndex].value
 
@@ -16,7 +17,7 @@ var mesesData = {
     backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
   },
     1: {
-    saldoConta: 1,
+    saldoConta: 0,
     receitas: 0,
     despesas: 0,
     gastosPorCategoria: [0, 0, 0, 0],
@@ -105,7 +106,19 @@ var options = {
 // Obtém o contexto do canvas
 var ctx = document.getElementById('myPieChart').getContext('2d');
 
+// Função para salvar dados no localStorage
+function salvarDadosNoLocalStorage() {
+  var mesesDataString = JSON.stringify(mesesData);
+  localStorage.setItem('dadosMeses', mesesDataString);
+}
 
+// Função para carregar dados do localStorage
+function carregarDadosDoLocalStorage() {
+  var mesesDataString = localStorage.getItem('dadosMeses');
+  if (mesesDataString) {
+    mesesData = JSON.parse(mesesDataString);
+  }
+}
 
 // Função para atualizar o gráfico e informações com base no mês selecionado
 function atualizarDadosMes(mes) {
@@ -123,7 +136,22 @@ function atualizarDadosMes(mes) {
   document.getElementById('saldo_conta').innerText = `R$ ${mesesData[mes].saldoConta.toFixed(2)}`;
   document.getElementById('num_receitas').innerText = `R$ ${mesesData[mes].receitas.toFixed(2)}`;
   document.getElementById('num_despesas').innerText = `R$ ${mesesData[mes].despesas.toFixed(2)}`;
+
+  salvarDadosNoLocalStorage();
 }
+
+function onChangeSelect() {
+  // Obtém o valor do mês selecionado
+  var novoMes = select.value;
+
+  // Atualiza os dados com base no novo mês
+  atualizarDadosMes(novoMes);
+}
+
+select.addEventListener('change', onChangeSelect);
+
+// Chama a função para carregar dados do localStorage ao iniciar
+carregarDadosDoLocalStorage();
 
 // Função para abrir o modal
 function abrirModal() {
@@ -396,11 +424,45 @@ function adicionarDividas() {
 // Função para adicionar salário
 function adicionarSalario() {
   var valorSalario = parseFloat(document.getElementById("valorSalario").value);
+  var diaSalario = parseInt(document.getElementById("diaSalario").value);
+
+  if (isNaN(valorSalario) || valorSalario <= 0 || isNaN(diaSalario) || diaSalario <= 0) {
+    alert('Por favor, digite valores válidos para o salário e o dia.');
+    return;
+  }
+
+  // Verifica se o dia informado é válido (de 1 a 31)
+  if (diaSalario < 1 || diaSalario > 31) {
+    alert('Por favor, digite um dia válido.');
+    return;
+  }
+
+  var mesesDataString = localStorage.getItem('dadosMeses');
+  if (mesesDataString) {
+    mesesData = JSON.parse(mesesDataString);
+  }
+
   mesesData[opcaoValor].receitas += parseFloat(valorSalario);
+
+  for (var i = 0; i < opcaoValor ; i++){
+    valorSalario += mesesData[opcaoValor].saldoConta;
+  }
+
+  // Adiciona o salário ao mês atual
   mesesData[opcaoValor].saldoConta += parseFloat(valorSalario);
+
+  // Define o salário para todos os meses
+  for (var mes in mesesData) {
+    mesesData[mes].salarioDia = diaSalario;
+  }
+
+  // Atualiza o gráfico e outras informações
   atualizarDadosMes(opcaoValor);
+
+  // Fecha a caixa de salário
   fecharcaixaSalario();
 }
+
 
 // Função para adicionar outros
 function adicionarOutros() {
